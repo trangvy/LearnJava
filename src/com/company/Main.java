@@ -1,5 +1,8 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -85,23 +88,74 @@ public class Main {
         num2.re = 3;
         num2.im = 4;
 
+        ComplexNumber num5 = new ComplexNumber();
+        num5.re = 6;
+        num5.im = 5;
+
         ComplexNumber num3;
         ComplexNumber num4;
 
 
-        num3 = ComplexNumber.plus(num1,num2);
+        num3 = ComplexNumber.add(num1,num2);
 
         System.out.println("tong 2 so phuc num1 va num2 la : " + num3.re + " + " + num3.im + "j");
 
-        num4 = ComplexNumber.brand(num1,num2);
+//        num4 = ComplexNumber.subtract(num1,num2);
+
+        num4 = num1.subtract(num2);
 
         System.out.println("hieu 2 so phuc num1 va num2 la : " + num4.re + " + " + num4.im + "j");
 
-        int module1 = ComplexNumber.dolon(num1);
+        int module1 = ComplexNumber.getMagnitude(num1);
 
         System.out.println("do lon cua so phuc num1 la : " + module1);
 
+        ComplexNumber[] number = new ComplexNumber[] {num1, num2, num5};
 
+        ComplexNumber maxMagnitudeNumber = ComplexNumber.findMaxMagnitudeNumber(number);
+
+        System.out.println("so phuc co do lon lon nhat la : " + maxMagnitudeNumber.re + " + " + maxMagnitudeNumber.im + "j");
+
+
+        /* Lesson 7 */
+        ArrayList<Integer> nums2 = new ArrayList<>();
+
+        Integer someNumber = 3;
+        nums2.add(someNumber);
+        nums2.add(2);
+        int someInt = 5;
+        nums2.add(someInt);
+        nums2.add(9);
+        nums2.add(-2);
+
+        for (Integer integer : nums2) {
+            System.out.println(integer);
+        }
+
+        Iterator<Integer> interator = nums2.iterator();
+        while (interator.hasNext()) {
+            Integer n = interator.next();
+            System.out.println(n);
+        }
+
+        Shape square1 = new Square();
+        Shape circle1 = new Circle();
+        Shape rectangle1 = new Rectangle();
+
+        ArrayList<Shape> shapes = new ArrayList<>();
+        shapes.add(square1);
+        shapes.add(circle1);
+        shapes.add(rectangle1);
+        for (Shape shape : shapes) {
+            System.out.println("My name is: " + shape.getName());
+        }
+
+        ArrayListCount counter = new ArrayListCount();
+        int oddCount = counter.count(nums2, new OddCheck());
+        System.out.println("odd count is : " + oddCount);
+
+        int positiveCount = counter.count(nums2, new PositiveCheck());
+        System.out.println("positive count is : " + positiveCount);
 
     }
 }
